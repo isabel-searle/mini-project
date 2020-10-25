@@ -5,14 +5,14 @@ def range_of_num():
     print("Hi!! Can you guess the number I'm thinking of?\nLet's play!!")        
     while range_num ==0:   
         try:
-            print("Choose what range of numbers from 0, you want to play with")
+            print("Choose the range of numbers from 0, you want to play with")
             range_num=int(input())
         except:
             print("Please check your spelling.\nYou should enter an integer number")
             range_num=0
     return range_num
 
-
+#Here I give the player the chance to choose the number of oportunities he/she wants:
 def chances():
     chan=0
     while chan==0:
@@ -50,6 +50,9 @@ def game():
         print("That is correct!! Congratulation!!")
         return 1
 
+
+#And last but not least the ejecution of the game:
+
 rounds=0
 range_num=range_of_num()
 chan=chances()
@@ -58,10 +61,22 @@ while rounds < chan:
     player=player_input()
     playing=game()
     if playing == 0:
+        fails=+1
         rounds+=1
     else:
         break
+percentage_succ=(chan/(range_num+1))+100
+rate_succ=(fails/rounds)*100
 if rounds == chan:
     print("Ooohh! You lost the game!")
+
+#I have taken the liberty of adding a little joke for the end of the game:
+
+print("Your success rate was:",percentage_succ,"%. Would you like to try again, yes or not?")
+again=str(input())
+if again == "yes":
+    print("Don't be lazy and get to work now!")
+else:
+    print("Well done! Don't waste your time!")
 
         
